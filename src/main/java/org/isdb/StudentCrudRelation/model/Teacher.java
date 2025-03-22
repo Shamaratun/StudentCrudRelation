@@ -1,0 +1,46 @@
+package org.isdb.StudentCrudRelation.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import java.math.BigDecimal;
+import java.time.Instant;
+import jakarta.persistence.GenerationType;  
+import jakarta.persistence.Id;  
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity(name= "T-Teacher")
+public class Teacher {
+
+
+    
+
+
+    @Id 
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private int id;
+    @Column(nullable = false,length = 50)
+    private String name;
+    @Column(unique = true, nullable = false, length = 50)    
+    private String email;
+    @Column(nullable = false, length = 10)    
+    private String gender;
+    @Column(nullable = false, length = 10)
+    private String address;
+    @Column(nullable = false, length = 10)
+    private String phone;
+    @Column(name = "joining_Date", nullable = false , updatable = false)
+    private Instant joiningDate;
+    @Column(nullable = false)
+    private BigDecimal salary;
+    @Column(name = "maritalStatus")
+    private Boolean maritalStatus;
+
+}
