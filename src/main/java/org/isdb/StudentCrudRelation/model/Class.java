@@ -1,7 +1,5 @@
 package org.isdb.StudentCrudRelation.model;
 
-import org.aspectj.internal.lang.annotation.ajcDeclareAnnotation;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,12 +25,13 @@ import lombok.Setter;
         private int id;
         @Column(nullable = false, length = 50)
         private String name;
+        
         @OneToOne
         @JoinColumn(name = "class_Teacher"  , referencedColumnName = "id")
         private Teacher classTeacher;
 
        
-        @Column(name="room_Number",nullable = false, unique = true, length = 50)
+        @Column(name="room_Number",nullable = false, unique = true, length = 30)
         private Integer roomNumber;
   
 
