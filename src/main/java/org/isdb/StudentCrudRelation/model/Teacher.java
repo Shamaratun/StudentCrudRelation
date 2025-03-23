@@ -9,6 +9,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.Instant;
+
+import org.isdb.StudentCrudRelation.config.InstantDeserializer;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import jakarta.persistence.GenerationType;  
 import jakarta.persistence.Id;  
 
@@ -36,11 +41,13 @@ public class Teacher {
     private String address;
     @Column(nullable = false, length = 10)
     private String phone;
+    
+    @JsonDeserialize(using = InstantDeserializer.class)
     @Column(name = "joining_Date", nullable = false , updatable = false)
     private Instant joiningDate;
     @Column(nullable = false)
     private BigDecimal salary;
     @Column(name = "maritalStatus")
-    private Boolean maritalStatus;
+    private Boolean isMarried;
 
 }

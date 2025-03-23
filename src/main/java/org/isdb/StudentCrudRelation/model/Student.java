@@ -16,13 +16,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-<<<<<<< HEAD
 
 
 
 
-=======
->>>>>>> 18077df612c977c954877a58b39e002ddcc0e9f3
 @Getter
 @Setter
 @AllArgsConstructor
@@ -40,14 +37,13 @@ public class Student {
 	@Column(nullable = false, length = 100)
 	private String email;
 
-<<<<<<< HEAD
-    @OneToMany(mappedBy = "student")
-    private List<Book> books;
-=======
+
+   
+
 	@OneToOne
 	@JoinColumn(name = "student_class", referencedColumnName = "id", nullable = false)
-	private Class studentClass;
->>>>>>> 18077df612c977c954877a58b39e002ddcc0e9f3
+	private StudentClass studentClass;
+
 
 	@Column(nullable = false, unique = true)
 	private int roll;
@@ -58,15 +54,9 @@ public class Student {
 	@Column(nullable = false, length = 100)
 	private String phone;
 
-<<<<<<< HEAD
-    @Column(nullable = false, length = 100)
-    private Instant dob;
-    
-
-=======
 	@Column(length = 100)
 	private String address;
->>>>>>> 18077df612c977c954877a58b39e002ddcc0e9f3
+
 
 	@Column(nullable = false, length = 100)
 	private String gender;

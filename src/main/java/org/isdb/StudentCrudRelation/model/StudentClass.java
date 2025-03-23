@@ -1,6 +1,6 @@
 package org.isdb.StudentCrudRelation.model;
 
-import org.aspectj.internal.lang.annotation.ajcDeclareAnnotation;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +21,7 @@ import lombok.Setter;
     @NoArgsConstructor
     @Entity(name= "T-Class")
 
-    public class Class {
+    public class StudentClass {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
         private int id;
