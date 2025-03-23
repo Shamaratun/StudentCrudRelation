@@ -16,49 +16,61 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 18077df612c977c954877a58b39e002ddcc0e9f3
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor  
+@NoArgsConstructor
 @Entity(name = "T_Student")
 public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
 
-    @Column(nullable = false, length = 100)
-    private String name;
-    
-    @Column(nullable = false, length = 100)
-    private String email;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 
-    @OneToOne
-    @JoinColumn(name = "clazz",referencedColumnName = "id" ,nullable = false)
-    private Class clazz;
+	@Column(nullable = false, length = 100)
+	private String name;
 
-    @Column(nullable = false, length = 30, unique = true)
-    private Integer roll;
+	@Column(nullable = false, length = 100)
+	private String email;
 
+<<<<<<< HEAD
     @OneToMany(mappedBy = "student")
     private List<Book> books;
+=======
+	@OneToOne
+	@JoinColumn(name = "student_class", referencedColumnName = "id", nullable = false)
+	private Class studentClass;
+>>>>>>> 18077df612c977c954877a58b39e002ddcc0e9f3
 
-    @Column(nullable = false, length = 100)
-    private String phone; 
+	@Column(nullable = false, unique = true)
+	private int roll;
 
-     @Column(length = 100)
-    private String address;
+	@OneToMany(mappedBy = "student")
+	private List<Book> books; // Renamed to plural for clarity
 
-    @Column(nullable = false, length = 100)
-    private String gender;
+	@Column(nullable = false, length = 100)
+	private String phone;
 
+<<<<<<< HEAD
     @Column(nullable = false, length = 100)
     private Instant dob;
     
 
+=======
+	@Column(length = 100)
+	private String address;
+>>>>>>> 18077df612c977c954877a58b39e002ddcc0e9f3
 
+	@Column(nullable = false, length = 100)
+	private String gender;
 
+	@Column(nullable = false)
+	private Instant dob;
 }
