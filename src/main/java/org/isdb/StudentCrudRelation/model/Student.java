@@ -2,11 +2,12 @@ package org.isdb.StudentCrudRelation.model;
 
 import java.time.Instant;
 import java.util.List;
-import org.springframework.data.annotation.Id;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -14,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 
 
@@ -42,7 +44,7 @@ public class Student {
     private Integer roll;
 
     @OneToMany(mappedBy = "student")
-    private List<Book> book;
+    private List<Book> books;
 
     @Column(nullable = false, length = 100)
     private String phone; 
@@ -55,6 +57,8 @@ public class Student {
 
     @Column(nullable = false, length = 100)
     private Instant dob;
+    
+
 
 
 }

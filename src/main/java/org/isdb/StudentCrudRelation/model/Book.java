@@ -1,11 +1,15 @@
 package org.isdb.StudentCrudRelation.model;
 
-import org.springframework.data.annotation.Id;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +33,13 @@ public class Book {
 
 @Column(nullable = false, length = 100)
     private String publisher;
-    
-   private Class clazz;
+@OneToOne    // OneToOne refers  One book can be connected with only one clazz.
+@JoinColumn(name = "clazz",referencedColumnName = "id" ,nullable = false)
+//@Transient ---it would be present in model but wouldn't show up as Column.
+   private Class clazz; 
+//private Class clazz; //if  we use the commented one  it will show up only as a column .
+@ManyToOne
+@JoinColumn(name = "student", referencedColumnName = "id", nullable = false)
+private Student student;
 
 }
