@@ -25,8 +25,9 @@ import lombok.Setter;
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
         private int id;
-        @Column(nullable = false, length = 50)
+        @Column(nullable = false, length = 50,unique = true)
         private String name;
+        
         @OneToOne
         @JoinColumn(name = "class_Teacher"  , referencedColumnName = "id")
         private Teacher classTeacher;

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.isdb.StudentCrudRelation.model.Teacher;
 import org.isdb.StudentCrudRelation.service.TeacherService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,9 +27,10 @@ public class TeacherController {
         }
 
 	@PostMapping
-	public Teacher saveTeacher(@RequestBody Teacher teacher) {
+	public ResponseEntity<?> saveTeacher(@RequestBody Teacher teacher) {
 		
-		return teacherService.saveTeacher(teacher);
+		Teacher saved = teacherService.saveTeacher(teacher);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 
 	}
 
@@ -36,8 +39,9 @@ public class TeacherController {
 		return teacherService.getTeacher(id);
 	}
     @DeleteMapping("/{id}")
-    public void deleteTeacher(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteTeacher(@PathVariable Integer id) {
 		 teacherService.deleteTeacher(id);
+		   return new ResponseEntity<>(HttpStatus.NO_CONTENT);
  
 	
 }
