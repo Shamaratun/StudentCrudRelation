@@ -42,7 +42,7 @@ public class Student {
 
 	@OneToOne
 	@JoinColumn(name = "student_class", referencedColumnName = "id", nullable = false)
-	private StudentClass studentClass;
+	private StudentClass studentClazz;
 
 
 	@Column(nullable = false, unique = true)

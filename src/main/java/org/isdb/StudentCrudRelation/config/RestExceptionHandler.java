@@ -31,7 +31,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                            body.put("message", ex.getMessage());
                body.put("path", request.getDescription(false));
                return new ResponseEntity<>(body, badRequest);
-            }   
+            }  
+             
 
 
 }

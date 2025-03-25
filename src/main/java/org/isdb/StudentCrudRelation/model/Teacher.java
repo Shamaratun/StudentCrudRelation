@@ -37,9 +37,9 @@ public class Teacher {
     private String email;
     @Column(nullable = false, length = 10)    
     private String gender;
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 30)
     private String address;
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 15)
     private String phone;
     
     @JsonDeserialize(using = InstantDeserializer.class)
