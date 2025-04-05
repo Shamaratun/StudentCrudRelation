@@ -16,10 +16,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-
-
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -37,13 +33,9 @@ public class Student {
 	@Column(nullable = false, length = 100)
 	private String email;
 
-
-   
-
 	@OneToOne
 	@JoinColumn(name = "student_class", referencedColumnName = "id", nullable = false)
-	private StudentClass studentClass;
-
+	private Student studentClass;
 
 	@Column(nullable = false, unique = true)
 	private int roll;
@@ -56,7 +48,6 @@ public class Student {
 
 	@Column(length = 100)
 	private String address;
-
 
 	@Column(nullable = false, length = 100)
 	private String gender;
