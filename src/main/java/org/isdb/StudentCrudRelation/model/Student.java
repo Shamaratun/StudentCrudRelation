@@ -35,7 +35,12 @@ public class Student {
 
 	@OneToOne
 	@JoinColumn(name = "student_class", referencedColumnName = "id", nullable = false)
+<<<<<<< HEAD
 	private Student studentClass;
+=======
+	private StudentClass studentClazz;
+
+>>>>>>> ebde45e7bee15a0998675578d51d9d34211359b0
 
 	@Column(nullable = false, unique = true)
 	private int roll;
