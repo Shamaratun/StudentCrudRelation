@@ -7,7 +7,10 @@ import org.isdb.StudentCrudRelation.dto.BookDTO;
 import org.isdb.StudentCrudRelation.model.Book;
 import org.isdb.StudentCrudRelation.model.StudentClass;
 import org.isdb.StudentCrudRelation.repository.BookRepository;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class BookService {
     private final BookRepository bookRepository;
     private final StudentClassService studentClassService;

@@ -3,6 +3,8 @@ package org.isdb.StudentCrudRelation.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.isdb.StudentCrudRelation.dao.ClassTeacher;
+import org.isdb.StudentCrudRelation.dao.ClassTeacherProjection;
 import org.isdb.StudentCrudRelation.dto.StudentClassDTO;
 import org.isdb.StudentCrudRelation.model.StudentClass;
 import org.isdb.StudentCrudRelation.model.Teacher;
@@ -68,5 +70,10 @@ public class StudentClassService {
         } else {
             throw new IllegalArgumentException(" Class for student not found");
         }
+    }
+
+    public List<ClassTeacherProjection> getAllClassTeacher() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllClassTeacher'");
     }
 }

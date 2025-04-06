@@ -15,13 +15,15 @@ import org.isdb.StudentCrudRelation.config.InstantDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import jakarta.persistence.GenerationType;  
-import jakarta.persistence.Id;  
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;  
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name= "T-Teacher")
+@Entity
+@Table(name= "T-Teacher")
 public class Teacher {
 
 

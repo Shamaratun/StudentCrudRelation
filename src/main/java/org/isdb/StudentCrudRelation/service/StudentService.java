@@ -7,7 +7,9 @@ import org.isdb.StudentCrudRelation.dto.StudentDTO;
 import org.isdb.StudentCrudRelation.model.Student;
 import org.isdb.StudentCrudRelation.model.StudentClass;
 import org.isdb.StudentCrudRelation.repository.StudentRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class StudentService {
 
    private final StudentRepository studentRepository;
@@ -19,7 +21,8 @@ public class StudentService {
 		this.studentClassService = studentClassService;
 	}
 
-	public Student saveStudent(StudentDTO studentDTO) {
+
+    public Student saveStudent(StudentDTO studentDTO) {
 		Integer clazzId = studentDTO.getClassId();
 		StudentClass clazz = studentClassService.getStudentClass(clazzId);
 

@@ -2,6 +2,8 @@ package org.isdb.StudentCrudRelation.controller;
 
 import java.util.List;
 
+import org.isdb.StudentCrudRelation.dao.ClassTeacher;
+import org.isdb.StudentCrudRelation.dao.ClassTeacherProjection;
 import org.isdb.StudentCrudRelation.dto.StudentClassDTO;
 import org.isdb.StudentCrudRelation.model.StudentClass;
 import org.isdb.StudentCrudRelation.model.Teacher;
@@ -58,4 +60,9 @@ public class StudentClassController {
 		StudentClass updated = studentClassService.updateStudentClass(id,classDTO);
         return updated;
 	}
+    @GetMapping("/getClassTeacher")
+    public List<ClassTeacherProjection> getAllClassTeacher(){
+        return studentClassService.getAllClassTeacher();
+    }
+    
 }
