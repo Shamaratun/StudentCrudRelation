@@ -65,9 +65,5 @@ public class TeacherService {
 }else{
 		return null;
 	}
-
-
-
-
 	}
 }

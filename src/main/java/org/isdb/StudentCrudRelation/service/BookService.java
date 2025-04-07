@@ -33,7 +33,6 @@ public class BookService {
 		}
 		return bookRepository.save(book);
 	}
-
     public Book updateBook(Integer id, Book book) {
         Optional<Book> bookById = bookRepository.findById(id);
         if (bookById.isPresent()) {
@@ -62,10 +61,6 @@ public class BookService {
          throw new UnsupportedOperationException("Unimplemented method 'deleteBook'");
 
     }
-
-  
-
-
     public void deleteBook(Integer id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteBook'");

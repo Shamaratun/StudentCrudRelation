@@ -3,7 +3,7 @@ package org.isdb.StudentCrudRelation.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.isdb.StudentCrudRelation.dao.ClassTeacher;
+
 import org.isdb.StudentCrudRelation.dao.ClassTeacherProjection;
 import org.isdb.StudentCrudRelation.dto.StudentClassDTO;
 import org.isdb.StudentCrudRelation.model.StudentClass;
