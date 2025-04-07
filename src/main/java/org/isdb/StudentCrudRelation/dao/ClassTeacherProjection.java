@@ -4,6 +4,7 @@ public interface ClassTeacherProjection {
     
   String getClassName();
     String getClassTeacherName();
+    
 
  
 }
