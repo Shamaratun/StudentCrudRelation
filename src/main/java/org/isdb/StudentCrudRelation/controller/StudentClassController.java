@@ -64,5 +64,5 @@ public class StudentClassController {
     public List<ClassTeacherProjection> getAllClassTeacher(){
         return studentClassService.getAllClassTeacher();
     }
-    
+  
 }

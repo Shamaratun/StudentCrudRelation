@@ -71,9 +71,12 @@ public class StudentClassService {
             throw new IllegalArgumentException(" Class for student not found");
         }
     }
+ // public List<ClassTeacherProjection> getAllClassTeacher() {
+    //     return studentClassRepository.getAllClassTeacher();
 
+    // }
     public List<ClassTeacherProjection> getAllClassTeacher() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllClassTeacher'");
-    }
+        return studentClassRepository.fetchAllClassTeacherRawQuery();
+}
+
 }

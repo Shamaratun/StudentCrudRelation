@@ -17,7 +17,7 @@ private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 @Scheduled(fixedRate = 5, timeUnit = TimeUnit.MINUTES)
-
+//@Scheduled(cron = "0 */5 * ? * *") 		
 public void reportCurrentTimeFixedRate() {
 	
 	try {Thread.sleep(Duration.ofMinutes(1));
