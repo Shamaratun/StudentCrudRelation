@@ -1,6 +1,6 @@
 package org.isdb.StudentCrudRelation.model;
 
-
+import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,28 +15,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@SuppressWarnings("serial")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "T_class")
+public class StudentClass implements Serializable {
 
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Entity
-    @Table(name= "T-Class")
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 
-    public class StudentClass {
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-        private int id;
-        @Column(nullable = false, length = 50,unique = true)
-        private String name;
-        
-        @OneToOne
-        @JoinColumn(name = "class_Teacher"  , referencedColumnName = "id")
-        private Teacher classTeacher;
+	@Column(nullable = false, length = 50, unique = true)
+	private String name;
 
-       
-        @Column(name="room_Number",nullable = false, unique = true, length = 50)
-        private Integer roomNumber;
-  
+	@OneToOne
+	@JoinColumn(name = "class_Teacher", referencedColumnName = "id")
+	private Teacher classTeacher;
 
+	@Column(name = "room_Number", nullable = false, unique = true, length = 50)
+	private Integer roomNumber;
 }

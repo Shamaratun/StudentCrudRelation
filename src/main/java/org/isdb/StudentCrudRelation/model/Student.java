@@ -1,5 +1,6 @@
 package org.isdb.StudentCrudRelation.model;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.List;
 
@@ -17,13 +18,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@SuppressWarnings("serial")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "T_Student")
-public class Student {
+public class Student implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,12 +39,9 @@ public class Student {
 
 	@OneToOne
 	@JoinColumn(name = "student_class", referencedColumnName = "id", nullable = false)
-<<<<<<< HEAD
-	private Student studentClass;
-=======
-	private StudentClass studentClazz;
 
->>>>>>> ebde45e7bee15a0998675578d51d9d34211359b0
+	private Student studentClass;
+	private StudentClass studentClazz;
 
 	@Column(nullable = false, unique = true)
 	private int roll;

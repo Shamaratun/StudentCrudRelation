@@ -1,5 +1,7 @@
 package org.isdb.StudentCrudRelation.model;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,13 +16,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@SuppressWarnings("serial")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "T-Book")
-public class Book {
+public class Book implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -30,18 +33,18 @@ public class Book {
 
 	@Column(nullable = false, length = 100)
 	private String author;
-    @Column(nullable = false, length = 100)
-    private String publisher;
-   // OneToOne refers  One book can be connected with only one clazz.
-    
-    @OneToOne   
-    @JoinColumn(name = "clazz",referencedColumnName = "id" ,nullable = false)
-    private StudentClass clazz; 
+	@Column(nullable = false, length = 100)
+	private String publisher;
+	// OneToOne refers One book can be connected with only one clazz.
+
+	@OneToOne
+	@JoinColumn(name = "clazz", referencedColumnName = "id", nullable = false)
+	private StudentClass clazz;
 //@Transient ---it would be present in model but wouldn't show up as Column.
- 
+
 //private Class clazz; //if  we use the commented one  it will show up only as a column .
-   @ManyToOne
-   @JoinColumn(name = "student", referencedColumnName = "id", nullable = false)
-private Student student;
+	@ManyToOne
+	@JoinColumn(name = "student", referencedColumnName = "id", nullable = false)
+	private Student student;
 
 }
