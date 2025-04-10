@@ -19,47 +19,41 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/book")
 public class BookController {
-    private final BookService bookService;
+	private final BookService bookService;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
+	public BookController(BookService bookService) {
+		this.bookService = bookService;
+	}
 
-  
+	@PostMapping
+	public ResponseEntity<?> saveBook(@RequestBody BookDTO bookDTO) {
+		Book saved = bookService.saveBook(bookDTO);
+		return new ResponseEntity<>(saved, HttpStatus.CREATED);
 
-    @PostMapping
-    public ResponseEntity<?> saveBook(@RequestBody BookDTO bookDTO) {
-        Book saved= bookService.saveBook(bookDTO);
-        return new ResponseEntity<>(saved ,HttpStatus.CREATED);
+	}
 
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<Book> getBook(@PathVariable Integer id) {
-        Book  byId = bookService.getBook(id);
-        return new ResponseEntity<>(byId,HttpStatus.OK);
-    }
-    @DeleteMapping("/{id}")
-    public  ResponseEntity<?> deleteBook(@PathVariable Integer id) {
-        bookService.deleteBook(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	@GetMapping("/{id}")
+	public ResponseEntity<Book> getBook(@PathVariable Integer id) {
+		Book byId = bookService.getBook(id);
+		return new ResponseEntity<>(byId, HttpStatus.OK);
+	}
 
-    }
-	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteBook(@PathVariable Integer id) {
+		bookService.deleteBook(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
-@GetMapping
-	public ResponseEntity<List<Book>>getBook(){
-        List<Book> books = bookService.getBook();
-        return new ResponseEntity<>(books,HttpStatus.OK);
-    }
-    
+	}
 
+	@GetMapping
+	public ResponseEntity<List<Book>> getAllBook() {
+		List<Book> books = bookService.getAllBook();
+		return new ResponseEntity<>(books, HttpStatus.OK);
+	}
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable Integer id, @RequestBody Book book) {
-		Book updated = bookService.updateBook(id,book);
-        return new ResponseEntity<>(updated,HttpStatus.OK);
+	@PutMapping("/{id}")
+	public ResponseEntity<Book> updateBook(@PathVariable Integer id, @RequestBody Book book) {
+		Book updated = bookService.updateBook(id, book);
+		return new ResponseEntity<>(updated, HttpStatus.OK);
 	}
 }
-
-
-

@@ -13,15 +13,11 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class StudentClassDTO {
-    @Nonnull
-    @Size( min=3, max=30, message="Name must be between 3 and 30 characters")
-    private String name;   
-    @Nonnull
-    @Size( message="Id must be Unique")
-    private Integer classTeacherId;
-    @Nonnull
-    @Size(message="Room number must be between 1 and 10")
-
-    private Integer roomNumber;
-
+	@Nonnull
+	@Size(min = 3, max = 30, message = "Name must be between 3 to 30 character")
+	private String name;
+	@Nonnull
+	private Integer classTeacherId;
+	@Nonnull
+	private Integer roomNumber;
 }

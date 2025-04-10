@@ -12,87 +12,86 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentService {
 
-   private final StudentRepository studentRepository;
+	private final StudentRepository repository;
 	private final StudentClassService studentClassService;
-	// private final
 
-	public StudentService(StudentRepository studentRepository, StudentClassService studentClassService) {
-		this.studentRepository = studentRepository;
+	public StudentService(StudentRepository repository, StudentClassService studentClassService) {
+		this.repository = repository;
 		this.studentClassService = studentClassService;
 	}
 
-
-    public Student saveStudent(StudentDTO studentDTO) {
-		Integer clazzId = studentDTO.getClassId();
-		StudentClass clazz = studentClassService.getStudentClass(clazzId);
+	public Student saveStudent(StudentDTO studentDTO) {
+		// TODO: In next class add books to student (For now skip the part)
+		Integer classId = studentDTO.getClassId();
+		StudentClass clazz = studentClassService.getStudentClass(classId);
 
 		Student student = new Student();
 		student.setName(studentDTO.getName());
 		student.setEmail(studentDTO.getEmail());
-		if (clazz != null){
-			student.setStudentClazz(clazz);
-        }
+		if (clazz != null)
+			student.setClazz(clazz);
 		student.setRoll(studentDTO.getRoll());
 		student.setPhone(studentDTO.getPhone());
 		student.setAddress(studentDTO.getAddress());
 		student.setGender(studentDTO.getGender());
 		student.setDob(studentDTO.getDob());
 
-		return studentRepository.save(student);
+		return repository.save(student);
 	}
-    public Student getStudent(Integer id) {
-		return studentRepository.findById(id).orElse(null);
+
+	public Student getStudent(Integer id) {
+		return repository.findById(id).orElse(null);
 	}
 
 	public void deleteStudent(Integer id) {
-		studentRepository.deleteById(id);
-
+		repository.deleteById(id);
 	}
 
 	public List<Student> getAllStudent() {
-		return studentRepository.findAll();
+		return repository.findAll();
 	}
 
-    public Student updateStudent(Integer id, StudentDTO studentDTO) {
-Optional<Student> studentById = studentRepository.findById(id);
-        if (studentById.isPresent()) {
-            Student aStudent = new Student();
+	public Student updateStudent(Integer id, StudentDTO studentDTO) {
+		Optional<Student> studentById = repository.findById(id);
 
-            if (studentDTO.getName() != null) {
-                aStudent.setName(studentDTO.getName());
-            }
-            if (studentDTO.getEmail() != null) {
-                aStudent.setEmail(studentDTO.getEmail());
-            }
-            if (studentDTO.getClassId() != null) {
-                Integer clazzId = studentDTO.getClassId();
-                StudentClass clazz = studentClassService.getStudentClass(clazzId);
-                if (clazz == null) {
-                    throw new RuntimeException("Class not found");
-                }
-                aStudent.setStudentClazz(clazz);
-            }
-            if (studentDTO.getRoll() != null) {
-                aStudent.setRoll(studentDTO.getRoll());
-            }
-            if (studentDTO.getPhone() != null) {
-                aStudent.setPhone(studentDTO.getPhone());
-            }
-            if (studentDTO.getAddress() != null) {
-                aStudent.setAddress(studentDTO.getAddress());
-            }
-            if (studentDTO.getGender() != null) {
-                aStudent.setGender(studentDTO.getGender());
-            }
-            if (studentDTO.getDob() != null) {
-                aStudent.setDob(studentDTO.getDob());
-            }
-            return studentRepository.save(aStudent);
-        } else {
-            throw new IllegalArgumentException(" Student for student not found");
-        }
-    }
+		if (studentById.isPresent()) {
+			Student aStudent = new Student();
+			if (studentDTO.getName() != null) {
+				aStudent.setName(studentDTO.getName());
+			}
+			if (studentDTO.getEmail() != null) {
+				aStudent.setEmail(studentDTO.getEmail());
+			}
+			if (studentDTO.getClassId() != null) {
+				Integer classId = studentDTO.getClassId();
+				StudentClass clazz = studentClassService.getStudentClass(classId);
+				if (clazz == null) {
+					throw new IllegalArgumentException("Class not found");
+				}
+				aStudent.setClazz(clazz);
+			}
+			if (studentDTO.getRoll() != null) {
+				aStudent.setRoll(studentDTO.getRoll());
+			}
+			// if (studentDTO.getBookIds() != null) {
+			// aStudent.setBooks(studentDTO.getBookIds());
+			// }
+			if (studentDTO.getPhone() != null) {
+				aStudent.setPhone(studentDTO.getPhone());
+			}
+			if (studentDTO.getAddress() != null) {
+				aStudent.setAddress(studentDTO.getAddress());
+			}
+			if (studentDTO.getGender() != null) {
+				aStudent.setGender(studentDTO.getGender());
+			}
+			if (studentDTO.getDob() != null) {
+				aStudent.setDob(studentDTO.getDob());
+			}
 
-  
-
+			return repository.save(aStudent);
+		} else {
+			throw new IllegalArgumentException("Student not found");
+		}
+	}
 }

@@ -23,18 +23,17 @@ import lombok.Setter;
 @Entity
 @Table(name = "T_class")
 public class StudentClass implements Serializable {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 
 	@Column(nullable = false, length = 50, unique = true)
 	private String name;
 
 	@OneToOne
-	@JoinColumn(name = "class_Teacher", referencedColumnName = "id")
+	@JoinColumn(name = "class_teacher", referencedColumnName = "id", nullable = false)
 	private Teacher classTeacher;
 
-	@Column(name = "room_Number", nullable = false, unique = true, length = 50)
+	@Column(name = "room_number", nullable = false, unique = true, length = 10)
 	private Integer roomNumber;
 }
