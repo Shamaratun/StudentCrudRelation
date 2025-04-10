@@ -5,10 +5,8 @@ import java.util.List;
 
 import org.isdb.StudentCrudRelation.dao.ClassTeacherProjection;
 import org.isdb.StudentCrudRelation.model.StudentClass;
-import org.isdb.StudentCrudRelation.model.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 public interface StudentClassRepository  extends JpaRepository<StudentClass,Integer>{
 
